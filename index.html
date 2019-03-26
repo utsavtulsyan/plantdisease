@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  
+  background-color: #0ddd41;
+  
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-size: 30px;
+}
+
+.banner {
+  grid-area: 1 / 1 / 1 / 6;
+
+}
+.centered {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+.banner-image{
+	max-width: 100%;
+  height: auto;
+}
+.item-image{
+	width: 95%;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	height: auto;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 50px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+</style>
+<title>Plant Disease Identification and Resolution Forum</title>
+</head>
+<body>
+
+
+
+<div class="grid-container">
+  <div class="banner"><img class="banner-image" src="banner.jpg">
+  	<div class="centered">Crop diseases are a major threat to food security, but their rapid identification remains difficult in many parts of the world due to the lack of the necessary infrastructure. The approach of training deep learning models on increasingly large and publicly available image datasets presents a clear path towards smartphone-assisted crop disease diagnosis on a massive global scale.</div>
+  </div>
+  <div style="border-style: solid" ><img id="item1" class="item-image" src="val/Apple___Apple_scab/83d10707-6253-4717-8c8a-6ea3ebb1e0e1___FREC_Scab 3138.JPG">
+  	<p>Leaf-Apple</p><p>Disease-Scab</p></div>
+  <div style="border-style: solid"  ><img id="item2"  class="item-image" src="val/Apple___Black_rot/3bf50ea4-980e-471b-bbd1-fc0c526dbb7a___JR_FrgE.S 2905.JPG">
+  	<p>Leaf-Apple</p><p>Disease-Black Rot</p></div>
+  <div style="border-style: solid"  ><img id="item3" class="item-image" src="val/Apple___Cedar_apple_rust/91c6f875-414d-4449-937c-488718a84921___FREC_C.Rust 3756.JPG">
+  	<p>Leaf-Apple</p><p>Disease-Cedar Rust</p></div>  
+  <div style="border-style: solid"  ><img id="item4" class="item-image" src="val/Apple___healthy/2a73c206-19c5-4f7c-80da-1bdf62354562___RS_HL 6082.JPG">
+  	<p>Leaf-Apple</p><p>Healthy Leaf</p></div>
+  <div style="border-style: solid"  ><img id="item5" class="item-image" src="val/Blueberry___healthy/0c87d5fc-df11-4e63-9f07-5220444bef41___RS_HL 0410.JPG">
+  	<p>Leaf-Blueberry</p><p>Healthy Leaf</p></div>
+  <div style="border-style: solid" ><img id="item6" class="item-image" src="val/Cherry_(including_sour)___healthy/1d981f31-74e1-4903-9e08-0475f632a5e3___JR_HL 9458.JPG">
+  	<p>Leaf-Cherry</p><p>Healthy Leaf</p></div>
+  <div style="border-style: solid"  ><img id="item7" class="item-image" src="val/Cherry_(including_sour)___Powdery_mildew/0b6b9fbc-9c62-4be9-bfc2-ff3126de6458___FREC_Pwd.M 0459.JPG">
+  	<p>Leaf-Cherry</p><p>Disease-Powdery Mildew</p></div>
+  <div style="border-style: solid" ><img id="item8" class="item-image" src="val/Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot/7b0308b0-8997-4318-b3e0-26c658f8dadf___RS_GLSp 7300.JPG"><p>Leaf-Corn</p><p>Disease-Cercospora Leaf Spot</p></div>  
+  <div style="border-style: solid" ><img id="item9" class="item-image" src="val/Corn_(maize)___Common_rust_/RS_Rust 1637.JPG"><p>Leaf-Corn</p><p>Disease-Common Rust</p></div>
+  <div style="border-style: solid" ><img id="item10" class="item-image" src="val/Corn_(maize)___healthy/0af3d913-471e-4769-9372-e0af517ba507___R.S_HL 5524 copy 2.jpg"><p>Leaf-Corn</p><p>Healthy Leaf</p></div> 
+  <div style="border-style: solid" ><img id="item11" class="item-image" src="val/Corn_(maize)___Northern_Leaf_Blight/0d0f6d14-be5c-4cb8-adb4-2cfd4d5f8540___RS_NLB 3642.JPG"><p>Leaf-Corn</p><p>Disease-Northern Leaf Blight</p></div> 
+  <div style="border-style: solid" ><img id="item12" class="item-image" src="val/Grape___Black_rot/0b11ac6a-9e24-4d9c-bbe9-e180eb81ff38___FAM_B.Rot 0581.JPG"><p>Leaf-Grape</p><p>Disease-Black Rot</p></div> 
+  <div style="border-style: solid" ><img id="item13" class="item-image" src="val/Grape___Esca_(Black_Measles)/0b351ad3-5a0c-4a62-b803-9f17fed7d3ea___FAM_B.Msls 1106.JPG"><p>Leaf-Grape</p><p>Disease-Black Measles</p></div> 
+  <div style="border-style: solid" ><img id="item14" class="item-image" src="val/grape___healthy/4a31039d-54b1-4a0f-bc5f-2032f94c27af___Mt.N.V_HL 9040.JPG"><p>Leaf-Grape</p><p>Disease-Healthy Leaf</p></div> 
+  <div style="border-style: solid" ><img id="item15" class="item-image" src="val/Grape___Leaf_blight_(Isariopsis_Leaf_Spot)/1df5b726-df30-4f40-919e-5866855b5e98___FAM_L.Blight 4770.JPG"><p>Leaf-Grape</p><p>Disease-Leaf Blight</p></div> 
+  <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 id="head-modal">Apple Scab</h2>
+    </div>
+    <div  class="modal-body">
+      <p id="body-modal">about apple scab</p>
+    	<iframe 
+    	id="item1iframe" 
+    	width="420" 
+    	height="345" 
+    	src="https://www.youtube.com/embed/videoId" 
+    	allowfullscreen="allowfullscreen"
+        mozallowfullscreen="mozallowfullscreen" 
+        msallowfullscreen="msallowfullscreen" 
+        oallowfullscreen="oallowfullscreen" 
+        webkitallowfullscreen="webkitallowfullscreen">
+		</iframe>
+      
+    </div>
+    <div  class="modal-footer">
+      <h3>Learn more about <a id="foot-modal" href="https://en.wikipedia.org/wiki/Apple_scab">Apple Scab</a></h3>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("item1");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+  document.getElementById("head-modal").innerHTML='Apple Scab';
+  document.getElementById("body-modal").innerHTML='Apple scab is a disease of Malus trees, such as apple trees, caused by the ascomycete fungus Venturia inaequalis. The disease manifests as dull black or grey-brown lesions on the surface of tree leaves, buds or fruits. Lesions may also appear less frequently on the woody tissues of the tree. Fruits and the undersides of leaves are especially susceptible. The disease rarely kills its host, but can significantly reduce fruit yields and fruit quality. Affected fruits are less marketable due to the presence of the black fungal lesions.';
+  document.getElementById("item1iframe").setAttribute("src", "https://www.youtube.com/embed/L8sQWnSvZDI");
+  document.getElementById("foot-modal").setAttribute('href','https://en.wikipedia.org/wiki/Apple_scab');
+  document.getElementById("foot-modal").innerHTML='Apple Scab';
+}
+var btn2=document.getElementById("item2");
+btn2.onclick=function(){
+	modal.style.display = "block";
+	document.getElementById("head-modal").innerHTML='Apple Black Rot';
+  document.getElementById("body-modal").innerHTML='Black rot is a name used for various diseases of cultivated plants caused by fungi or bacteria, producing dark brown discoloration and decay in the leaves of fruit and vegetables: A disease of the apple, pear and quince caused by a fungus (Botryosphaeria obtusa or Physalospora cydoniae)';
+  document.getElementById("item1iframe").setAttribute("src", "https://www.youtube.com/embed/HT_qdcl0cp8");
+  document.getElementById("foot-modal").setAttribute('href','https://en.wikipedia.org/wiki/Black_rot');
+  document.getElementById("foot-modal").innerHTML='Apple Black Rot';
+	
+}
+var btn3=document.getElementById("item3");
+btn3.onclick=function(){
+	modal.style.display = "block";
+	document.getElementById("head-modal").innerHTML='Cedar Apple Rust';
+  document.getElementById("body-modal").innerHTML='Gymnosporangium juniperi-virginianae is a plant pathogen that causes cedar-apple rust. In virtually any location where apples or crabapples (Malus) and Eastern red-cedar (Juniperus virginiana) coexist, cedar apple rust can be a destructive or disfiguring disease on both the apples and cedars. Quince and hawthorn are the most common host and many species of juniper can substitute for the Eastern red cedars.';
+  document.getElementById("item1iframe").setAttribute("src", "https://www.youtube.com/embed/xNXVLKP6dkU");
+  document.getElementById("foot-modal").setAttribute('href','https://en.wikipedia.org/wiki/Gymnosporangium_juniperi-virginianae');
+  document.getElementById("foot-modal").innerHTML='Cedar Apple Rust';
+	
+}
+var btn4=document.getElementById("item4");
+btn4.onclick=function(){
+	modal.style.display = "block";
+	document.getElementById("head-modal").innerHTML='Apple Tree';
+  document.getElementById("body-modal").innerHTML='An apple is a sweet, edible fruit produced by an apple tree. Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus. The tree originated in Central Asia, where its wild ancestor, Malus sieversii, is still found today.';
+  document.getElementById("item1iframe").setAttribute("src", "https://www.youtube.com/embed/_Km5hyS8So4");
+  document.getElementById("foot-modal").setAttribute('href','https://en.wikipedia.org/wiki/Apple');
+  document.getElementById("foot-modal").innerHTML='Apple Tree';
+	
+}
+var btn5=document.getElementById("item5");
+btn5.onclick=function(){
+	modal.style.display = "block";
+	document.getElementById("head-modal").innerHTML='Blueberry Bush';
+  document.getElementById("body-modal").innerHTML='Blueberries are perennial flowering plants with blue– or purple–colored berries. They are classified in the section Cyanococcus within the genus Vaccinium. Vaccinium also includes cranberries, bilberries, and huckleberries.[1] Commercial "blueberries" – including both wild (\'lowbush\') and cultivated (\'highbush\') blueberries – are all native to North America. The highbush blueberry varieties were introduced into Europe during the 1930s.';
+  document.getElementById("item1iframe").setAttribute("src", "https://www.youtube.com/embed/_835IcXpLYg");
+  document.getElementById("foot-modal").setAttribute('href','https://en.wikipedia.org/wiki/Blueberry');
+  document.getElementById("foot-modal").innerHTML='BlueBerry';
+	
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+	var myPlayer = document.getElementById("item1iframe"); 
+	var url=myPlayer.getAttribute('src');
+  	myPlayer.setAttribute("src", " ");
+  	myPlayer.setAttribute("src", url);
+  	modal.style.display = "none";
+	
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+  	var myPlayer = document.getElementById("item1iframe"); 
+	var url=myPlayer.getAttribute('src');
+  	myPlayer.setAttribute("src", " ");
+  	myPlayer.setAttribute("src", url);
+    modal.style.display = "none";
+  }
+}
+
+</script>
+</body>
+</html>
